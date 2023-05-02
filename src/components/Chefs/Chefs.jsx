@@ -9,7 +9,7 @@ const Chefs = () => {
       <div>
          <h2>this is chefs page length {allChefs.length} </h2>
 
-         <div className="w-[80%] mx-auto">
+         <div className="w-[80%] mx-auto  grid md:grid-cols-2 space-x-3 space-y-3 items-center">
             {allChefs.map((chef) => (
                <SingleChef key={chef.id} chef={chef}></SingleChef>
             ))}
