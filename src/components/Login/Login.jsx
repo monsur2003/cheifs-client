@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaBeer, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+// import { Result } from "postcss";
 
 const Login = () => {
+   const { googleLogin } = useContext(AuthContext);
+
+   const handleGoogleLogin = () => {
+      googleLogin()
+         .then((result) => {
+            const loggedUser = result.user;
+         })
+         .catch((err) => {
+            console.log(err.message);
+         });
+   };
    return (
       <>
          <div className="flex flex-col items-center justify-center min-h-screen ">
@@ -51,7 +64,9 @@ const Login = () => {
                      <FaGithub className="mr-2" />
                      GitHub
                   </button>
-                  <button className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full flex items-center justify-center">
+                  <button
+                     onClick={handleGoogleLogin}
+                     className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded-full flex items-center justify-center">
                      <FaGoogle className="mr-2" />
                      Google
                   </button>

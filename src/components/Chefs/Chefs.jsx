@@ -4,7 +4,7 @@ import SingleChef from "../SingleChef/SingleChef";
 
 const Chefs = () => {
    const allChefs = useLoaderData();
-   console.log(allChefs);
+   // console.log(allChefs);
    return (
       <div>
          <h2>this is chefs page length {allChefs.length} </h2>

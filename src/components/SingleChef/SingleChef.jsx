@@ -3,7 +3,7 @@ import { FaConciergeBell, FaGratipay, FaReceipt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const SingleChef = ({ chef }) => {
-   console.log(chef);
+   // console.log(chef);
    const { name, id, image, yearsExperience, numRecipes, likes } = chef;
    return (
       <div className="card h-[220px] card-side items-center bg-base-100 shadow-lg">
