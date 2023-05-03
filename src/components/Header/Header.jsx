@@ -20,22 +20,17 @@ const Navbar = () => {
 
    return (
       <>
-         <nav className="fixed md:flex p-5 justify-between items-center text-pink-400 top-0 left-0 right-0 z-20 bg-[#1b1b4e81]">
-            <div className="company text-2xl font-semibold">
-               <span className="text-3xl text-blue-500">B</span>aghichary vhat
-               ghor
-            </div>
+         <nav className="fixed md:flex p-5 justify-between items-center text-blue-400 top-0 left-0 right-0 z-20 bg-[#1b1b4e81]">
+            <p className="company text-gray-300 text-4xl font-semibold">
+               <span className="text-5xl font-serif text-blue-700">F</span>
+               oodie
+            </p>
             <div className="hidden md:flex items-center gap-x-3 md:gap-x-6">
                <ActiveLink to="/">Home</ActiveLink>
                <ActiveLink to="/login"> Login</ActiveLink>
                <ActiveLink to="/blog">Blogs</ActiveLink>
             </div>
-            {/* {user && (
-               <div className="profile-section flex gap-2 items-center">
-                  <FaUserCircle className="text-2xl"></FaUserCircle>
-                  <p>Monsur alam</p>
-               </div>
-            )} */}
+
             <div>
                {user ? (
                   <div className="flex items-center gap-3">
@@ -53,11 +48,14 @@ const Navbar = () => {
                      </button>
                   </div>
                ) : (
-                  <Link to="/login">
-                     <button className="bg-gray-400 text-black py-2 px-4 rounded-md">
-                        Login
-                     </button>
-                  </Link>
+                  <div className="flex items-center gap-x-3">
+                     <FaUserCircle className="text-4xl"></FaUserCircle>
+                     <Link to="/login">
+                        <button className="bg-gray-400 text-black py-2 px-4 rounded-md">
+                           Login
+                        </button>
+                     </Link>
+                  </div>
                )}
             </div>
             <div className="block md:hidden">
