@@ -1,8 +1,10 @@
 import React from "react";
+import { Rating } from "@smastrom/react-rating";
+import { FaRegStar, FaStar } from "react-icons/fa";
 
 const Recipe = ({ recipe }) => {
    console.log(recipe);
-   const { name, ingredients, cookingMethod } = recipe;
+   const { name, ingredients, cookingMethod, rating } = recipe;
    return (
       <div className="mt-9">
          <div className="card w-[400px] h-[600px] border border-red-300 p-5">
@@ -30,6 +32,16 @@ const Recipe = ({ recipe }) => {
                      ? cookingMethod
                      : cookingMethod.slice(0, 260)}
                </p>
+            </div>
+            <div>
+               <Rating
+                  initialRating={3}
+                  placeholderRating={rating}
+                  emptySymbol={<FaRegStar></FaRegStar>}
+                  placeholderSymbol={<FaStar></FaStar>}
+                  fullSymbol={<FaStar></FaStar>}
+                  readOnly
+               />
             </div>
          </div>
       </div>

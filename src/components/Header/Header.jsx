@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ActiveLink from "../ActiveLink/ActiveLink";
 
 const Navbar = () => {
    return (
@@ -26,16 +27,16 @@ const Navbar = () => {
                   className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200 mr-4">
                   Home
                </Link>
-               <Link
+               <ActiveLink
                   to="/login"
                   className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200 mr-4">
                   Login
-               </Link>
-               <Link
+               </ActiveLink>
+               <ActiveLink
                   to="/blog"
                   className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-gray-200">
                   Blogs
-               </Link>
+               </ActiveLink>
             </div>
          </div>
       </nav>

@@ -4,6 +4,14 @@ import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+   const handleLogin = (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.email.value;
+      const password = form.password.value;
+      console.log(email, password);
+   };
+
    return (
       <div
          className="min-h-screen flex items-center justify-center bg-cover"
@@ -17,7 +25,7 @@ const Login = () => {
                Please Login
             </h2>
 
-            <form className="space-y-6 w-[40%] mx-auto">
+            <form onSubmit={handleLogin} className="space-y-6 w-[40%] mx-auto">
                <hr className="mb-2 mx-auto" />
                <div className="">
                   <label
@@ -29,6 +37,7 @@ const Login = () => {
                      className="appearance-none border rounded py-2 px-3 w-full px-3text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                      id="email"
                      type="email"
+                     name="email"
                      placeholder="Email address"
                   />
                </div>
@@ -42,6 +51,7 @@ const Login = () => {
                      className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                      id="password"
                      type="password"
+                     name="password"
                      placeholder="Password"
                   />
                </div>

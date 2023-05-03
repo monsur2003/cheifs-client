@@ -11,6 +11,7 @@ import Blogs from "./components/Blogs/Blogs.jsx";
 import AuthProvider from "./components/Provider/AuthProvider.jsx";
 import ChefRecfipe from "./components/ChefRecipe/ChefRecfipe.jsx";
 import ErrorPage from "./components/Error/ErrorPage.jsx";
+
 // import AwesomeSlider from "react-awesome-slider";
 const router = createBrowserRouter([
    {

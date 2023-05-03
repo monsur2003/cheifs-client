@@ -1,9 +1,39 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { FaBeer, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import bg from "../../assets/banner2.jpg";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
+   const [error, setError] = useState("");
+   const { createUser } = useContext(AuthContext);
+
+   const handleSignUp = (event) => {
+      event.preventDefault();
+      const form = event.target;
+      const email = form.email.value;
+      const password = form.pass.value;
+      const name = form.name.value;
+      const photo = form.photo.value;
+      const confirmPassword = form.confirm.value;
+
+      if (/(?=.*[A-Z])/.test(password)) {
+         setError("please enter atleast one uppercase letters");
+         return;
+      } else if (password.length < 6) {
+         setError("Password must be at least 6 characters");
+         return;
+      }
+      createUser(email, password)
+         .then((result) => {
+            const createdUser = result.user;
+            console.log(createdUser);
+         })
+         .catch((err) => {
+            console.log(err.message);
+         });
+   };
+
    return (
       <div
          className="min-h-screen flex items-center justify-center bg-cover"
@@ -17,7 +47,7 @@ const Register = () => {
                Please Login
             </h2>
 
-            <form className="space-y-3 w-[40%] mx-auto">
+            <form onSubmit={handleSignUp} className="space-y-3 w-[40%] mx-auto">
                <hr className="mb-2 mx-auto" />
                <div className=" ">
                   <div className="w-full mb-3">
@@ -52,14 +82,14 @@ const Register = () => {
                <div className="">
                   <label
                      className="block text-gray-100 font-bold mb-[4px]"
-                     htmlFor="email">
+                     htmlFor="">
                      drop your photoURL
                   </label>
                   <input
                      className="appearance-none border rounded py-2 px-3 w-full px-3text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                     id="email"
+                     id="photo"
                      name="photo"
-                     type="email"
+                     type="text"
                      placeholder="Drop your photo URL"
                   />
                </div>
@@ -73,7 +103,7 @@ const Register = () => {
                      <input
                         className="appearance-none border rounded rounded-r-none w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="password"
-                        name="password"
+                        name="pass"
                         type="password"
                         placeholder="Password"
                      />
@@ -93,6 +123,7 @@ const Register = () => {
                      />
                   </div>
                </div>
+               <p className="text-red-500">{error}</p>
                <div className="">
                   <button
                      type="submit"
