@@ -6,7 +6,7 @@ const SingleChef = ({ chef }) => {
    // console.log(chef);
    const { name, id, image, yearsExperience, numRecipes, likes } = chef;
    return (
-      <div className="card h-[220px] card-side items-center bg-base-100 shadow-lg">
+      <div className="card h-[220px] rounded-none border-b-4 border-blue-400 border-l-2 card-side items-center bg-base-100 shadow-md">
          <figure>
             <img className="w-[260px] h-[220px]" src={image} alt="" />
          </figure>
