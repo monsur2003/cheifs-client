@@ -71,7 +71,7 @@ const Navbar = () => {
             </div>
          </nav>
          {menuOpen && (
-            <div className="fixed top-0 left-0 right-0 bottom-0 z-50 bg-[#3737b1e7] flex flex-col items-center pt-28">
+            <div className="fixed top-0 left-50 right-0 h-[80px] bottom-0 z-50 bg-[#3737b1e7] flex flex-col items-center pt-28">
                <ActiveLink
                   onClick={toggleMenu}
                   to="/"

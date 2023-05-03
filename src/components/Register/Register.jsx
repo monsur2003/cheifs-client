@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import bg from "../../assets/banner2.jpg";
 import { AuthContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
-
+import Typewriter from "typewriter-effect";
 const Register = () => {
    const [error, setError] = useState("");
    const [success, setSuccess] = useState("");
@@ -71,7 +71,16 @@ const Register = () => {
          }}>
          <div className="bg-[#03114198] h-[120vh] flex flex-col justify-center items-center rounded-lg shadow-lg p-8 w-full space-y-4">
             <h2 className="text-4xl font-semibold text-gray-100  text-center">
-               Please Register!
+               <Typewriter
+                  options={{
+                     strings: ["Please Register"],
+                     autoStart: true,
+                     loop: true,
+                     delay: 80,
+                     cursor: "_",
+                     deleteSpeed: 20,
+                  }}
+               />
             </h2>
 
             <form onSubmit={handleSignUp} className="space-y-3 w-[40%] mx-auto">

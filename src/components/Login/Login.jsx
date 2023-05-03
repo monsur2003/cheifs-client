@@ -3,9 +3,11 @@ import bg from "../../assets/banner2.jpg";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+// import TypewriterComponent from "typewriter-effect";
+import Typewriter from "typewriter-effect";
 
 const Login = () => {
-   const { loginUser } = useContext(AuthContext);
+   const { loginUser, googleLogin } = useContext(AuthContext);
    const [error, setError] = useState("");
    const [success, setSuccess] = useState("");
    const navigate = useNavigate();
@@ -36,17 +38,38 @@ const Login = () => {
       console.log(email, password);
    };
 
+   const loginWiteGoogle = () => {
+      googleLogin()
+         .then((result) => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+         })
+         .catch((error) => {
+            console.log(error.message);
+         });
+   };
+
    return (
       <div
-         className="min-h-screen flex items-center justify-center bg-cover"
+         className="min-h-screen relative flex items-center justify-center bg-cover"
          style={{
             backgroundImage: `url(${bg})`,
             backgroundColor: "#0311418e",
             backgroundBlendMode: "overlay",
          }}>
-         <div className="bg-[#03114198] h-[100vh] flex flex-col justify-center items-center rounded-lg shadow-lg p-8 w-full space-y-4">
+         <div className=" absolute inset-0 bg-[#000000b2]"></div>
+         <div className="absolute flex flex-col justify-center items-center rounded-lg shadow-lg p-8 w-full space-y-4">
             <h2 className="text-4xl font-semibold text-gray-100  text-center">
-               Please Login
+               <Typewriter
+                  options={{
+                     strings: ["Please login"],
+                     autoStart: true,
+                     loop: true,
+                     delay: 80,
+                     cursor: "_",
+                     deleteSpeed: 20,
+                  }}
+               />
             </h2>
 
             <form onSubmit={handleLogin} className="space-y-6 w-[40%] mx-auto">
@@ -117,6 +140,7 @@ const Login = () => {
                         <FaGithub className="text-gray-500" />
                      </button>
                      <button
+                        onClick={googleLogin}
                         type="button"
                         className="bg-white rounded-full border-gray-400 border-2 p-2 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                         <FaGoogle className="text-gray-500" />
