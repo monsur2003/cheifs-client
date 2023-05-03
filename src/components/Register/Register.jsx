@@ -3,9 +3,11 @@ import { FaBeer, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import bg from "../../assets/banner2.jpg";
 import { AuthContext } from "../Provider/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const Register = () => {
    const [error, setError] = useState("");
+   const [success, setSuccess] = useState("");
    const { createUser } = useContext(AuthContext);
 
    const handleSignUp = (event) => {
@@ -17,7 +19,13 @@ const Register = () => {
       const photo = form.photo.value;
       const confirmPassword = form.confirm.value;
 
-      if (/(?=.*[A-Z])/.test(password)) {
+      if (password !== confirmPassword) {
+         setError("Password Didn't match");
+         return;
+      } else if (!/(?=.*[0-9])/.test(password)) {
+         setError("please enter atleast two number");
+         return;
+      } else if (!/(?=.*[A-Z])/.test(password)) {
          setError("please enter atleast one uppercase letters");
          return;
       } else if (password.length < 6) {
@@ -27,10 +35,29 @@ const Register = () => {
       createUser(email, password)
          .then((result) => {
             const createdUser = result.user;
+            setError("");
+            setSuccess("account successfully create");
+            updateDetails(createdUser, name, photo);
+            form.reset();
             console.log(createdUser);
          })
          .catch((err) => {
+            setSuccess("");
+            setError(error.message);
             console.log(err.message);
+         });
+   };
+
+   const updateDetails = (user, name, photo) => {
+      updateProfile(user, {
+         displayName: name,
+         photoURL: photo,
+      })
+         .then(() => {
+            console.log("update profile");
+         })
+         .catch((error) => {
+            console.log(error.message);
          });
    };
 
@@ -44,7 +71,7 @@ const Register = () => {
          }}>
          <div className="bg-[#03114198] h-[120vh] flex flex-col justify-center items-center rounded-lg shadow-lg p-8 w-full space-y-4">
             <h2 className="text-4xl font-semibold text-gray-100  text-center">
-               Please Login
+               Please Register!
             </h2>
 
             <form onSubmit={handleSignUp} className="space-y-3 w-[40%] mx-auto">
@@ -62,6 +89,7 @@ const Register = () => {
                         type="text"
                         name="name"
                         placeholder="Enter your full name"
+                        required
                      />
                   </div>
                   <div className="w-full">
@@ -76,6 +104,7 @@ const Register = () => {
                         type="email"
                         name="email"
                         placeholder="Email address"
+                        required
                      />
                   </div>
                </div>
@@ -91,6 +120,7 @@ const Register = () => {
                      name="photo"
                      type="text"
                      placeholder="Drop your photo URL"
+                     required
                   />
                </div>
                <div className="flex justify-between items-center space-x-2">
@@ -106,6 +136,7 @@ const Register = () => {
                         name="pass"
                         type="password"
                         placeholder="Password"
+                        required
                      />
                   </div>
                   <div className="w-full">
@@ -120,6 +151,7 @@ const Register = () => {
                         type="password"
                         name="confirm"
                         placeholder="Password"
+                        required
                      />
                   </div>
                </div>

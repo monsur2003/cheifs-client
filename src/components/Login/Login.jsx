@@ -1,14 +1,38 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import bg from "../../assets/banner2.jpg";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
+   const { loginUser } = useContext(AuthContext);
+   const [error, setError] = useState("");
+   const [success, setSuccess] = useState("");
+   const navigate = useNavigate();
+   const location = useLocation();
+   console.log(location);
+   const from = location.state?.from?.pathname || "/";
+
    const handleLogin = (event) => {
       event.preventDefault();
       const form = event.target;
       const email = form.email.value;
       const password = form.password.value;
+      loginUser(email, password)
+         .then((result) => {
+            const loggedUser = result.user;
+            setError("");
+            setSuccess("Login successful");
+            form.reset();
+            console.log(loggedUser);
+            navigate(from, { replace: true });
+         })
+         .catch((error) => {
+            setSuccess("");
+            setError(error.message);
+            console.log(error.message);
+         });
+
       console.log(email, password);
    };
 
@@ -54,6 +78,13 @@ const Login = () => {
                      name="password"
                      placeholder="Password"
                   />
+               </div>
+               <div className="my-0 py-0 m-0 p-0">
+                  {error ? (
+                     <p className="text-red-500 m-0 p-0">{error}</p>
+                  ) : (
+                     <p className="text-green-600 m-0 p-0">{success}</p>
+                  )}
                </div>
                <div>
                   <button

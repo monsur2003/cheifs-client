@@ -1,4 +1,4 @@
-import React, { Children, createContext, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
    GoogleAuthProvider,
    createUserWithEmailAndPassword,
@@ -15,6 +15,7 @@ const auth = getAuth(app);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
+   const [loading, setLoading] = useState(true);
    const [user, setUser] = useState(null);
 
    const googleLogin = () => {
@@ -30,7 +31,7 @@ const AuthProvider = ({ children }) => {
    };
 
    const logOutuser = () => {
-      return signOut(auth)
+      signOut(auth)
          .then(() => {
             console.log("logout successful");
          })
@@ -39,16 +40,19 @@ const AuthProvider = ({ children }) => {
          });
    };
 
-   fetch(() => {
+   useEffect(() => {
       const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
-         console.log(currentUser);
+         setLoading(false);
+         setUser(currentUser);
       });
       return () => {
-         unSubscribe();
+         return unSubscribe();
       };
    }, []);
 
    const authInfo = {
+      loading,
+      user,
       googleLogin,
       createUser,
       loginUser,
