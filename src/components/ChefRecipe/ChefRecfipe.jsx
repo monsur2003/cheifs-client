@@ -84,7 +84,7 @@ const ChefRecfipe = () => {
                for Every Occasion
             </p>
 
-            <div className="text-gray-200">
+            <div className="text-gray-200 grid md:grid-cols-3  mx-auto gap-3">
                {recipes.map((recipe) => (
                   <Recipe key={recipe.id} recipe={recipe}></Recipe>
                ))}
