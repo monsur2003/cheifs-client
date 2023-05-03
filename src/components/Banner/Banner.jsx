@@ -31,7 +31,7 @@ const Banner = () => {
                   height: "100vh",
                }}>
                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white bg-[#0c0fa756] w-[100%] h-[100vh] text-center">
-                  <h2>Slide 1</h2>
+                  <h2>Delacious food is our passion</h2>
                   <p>Slide content goes here</p>
                </div>
             </div>
