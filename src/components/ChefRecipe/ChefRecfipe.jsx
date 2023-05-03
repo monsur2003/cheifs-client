@@ -1,51 +1,110 @@
 import React from "react";
+import { FaGratipay } from "react-icons/fa";
 import { useLoaderData, useParams } from "react-router-dom";
+// import bg from "../../assets/banner3.jpg";
+import video from "../../assets/videoplayback (2).mp4";
+import Recipe from "../Recipe/Recipe";
 
 const ChefRecfipe = () => {
    const { id } = useParams();
    const allRecipes = useLoaderData();
    const singleRecipes = allRecipes.find((recipes) => recipes.id == id);
-   console.log(singleRecipes);
+
+   const { name, image, recipes, yearsExperience, numRecipes, bio, likes } =
+      singleRecipes;
    return (
-      <div className="py-20">
-         <h3 className="0 text-white">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit
-            tempore labore debitis sint ex odit tempora obcaecati quaerat
-            similique, porro ipsum reiciendis eligendi placeat fugiat molestiae
-            dolorum soluta non cum blanditiis dignissimos velit? Numquam modi
-            error nemo, impedit aliquid, blanditiis ipsam ipsum libero placeat
-            porro ab provident deserunt quia vero architecto id distinctio
-            aliquam laudantium cupiditate animi dicta rerum reprehenderit. Omnis
-            cupiditate impedit blanditiis facere minima eligendi expedita error
-            repudiandae odit dolore mollitia id saepe ab rerum recusandae autem
-            corporis magni labore dolores aut obcaecati, adipisci fugiat fugit
-            eius. Dolorum perferendis iusto, autem modi laborum, iste soluta
-            alias inventore impedit est earum reprehenderit. Ab fuga numquam, ut
-            cum tenetur nostrum est, excepturi quos totam, natus omnis magnam
-            aliquam sapiente quo voluptas veniam in explicabo qui quia ad hic
-            ullam eveniet quaerat? Corrupti quos aspernatur dolores at dolor
-            quibusdam harum voluptatibus odit, maxime reprehenderit, dicta
-            corporis aut vero, eius nam porro. Incidunt, enim nobis! Aspernatur
-            hic consectetur corporis laudantium rerum atque, blanditiis ut
-            aperiam maxime distinctio velit iste amet, iure animi laboriosam
-            autem. Vel accusamus cumque quas. Fuga recusandae, illum soluta
-            sapiente consectetur accusamus nesciunt? Quae fugit reiciendis porro
-            inventore magni provident quod modi molestiae possimus nihil nemo
-            facilis voluptatem fugiat vel, eligendi, dolore veritatis qui
-            impedit dignissimos numquam harum! Quis eos quas a ullam id soluta
-            illo ab pariatur! Laboriosam ducimus, natus voluptatibus ullam eum
-            vitae inventore perspiciatis quo. Voluptates eligendi odit
-            accusantium quae velit itaque magni quod ullam veniam voluptatem
-            dolore obcaecati architecto, animi error eveniet ipsam harum officia
-            saepe nihil, quisquam asperiores adipisci aspernatur assumenda. Modi
-            enim iusto non veritatis nihil quod harum. Aliquid fuga perferendis
-            inventore quaerat deserunt quia a molestiae aperiam. Vero
-            perspiciatis molestias beatae tempore reiciendis sapiente ab omnis,
-            provident ipsam nesciunt, excepturi numquam quos dolore veniam saepe
-            quisquam id iure optio ratione veritatis dignissimos.
-         </h3>
-      </div>
+      <>
+         <div className="relative">
+            {/* Video */}
+            <video
+               className=" w-full h-full z-[-1] overlay object-cover"
+               src={video}
+               autoPlay
+               muted
+               loop></video>
+            {/* Overlay */}
+            <div className=" absolute inset-0 bg-[#0c0404cc]"></div>
+            {/* Text */}
+            <div className=" pt-36 absolute w-full flex justify-center flex-col items-center  top-[35%] left-[50%] transform -translate-x-1/2 -translate-y-1/2   z-10 max-w-7xl  px-4 sm:px-6 lg:px-8">
+               <div className="pt-[80px] mx-auto w-full">
+                  <div className="w-full card bg-[#18034983] rounded-none lg:card-side bg-base-100 shadow-xl">
+                     <figure>
+                        <img
+                           className=" object-cover"
+                           src={image}
+                           alt="Album"
+                        />
+                     </figure>
+                     <div className="body-card p-6">
+                        <h2 className="text-2xl text-gray-100 font-bold mb-3 text-center">
+                           {name}
+                        </h2>
+
+                        <p className="border-b-2 text-gray-300 border-t-2 text-[18px] font-semibold border-gray-300 p-2">
+                           {bio}
+                        </p>
+
+                        <p className="flex mt-4 text-gray-200 text-[18px] font-semibold gap-1 items-center">
+                           Likes:{" "}
+                           <FaGratipay className="text-red-500 text-[16px] ml-2"></FaGratipay>
+                           <span className="font-semibold text-[16px]">
+                              {likes}
+                           </span>
+                        </p>
+                        <p className="text-[18px] text-gray-200 font-semibold">
+                           Recipes:{" "}
+                           <span className="text-[16px] ml-2">
+                              {numRecipes}
+                           </span>
+                        </p>
+                        <p className="text-[18px] text-gray-200 font-semibold">
+                           Experience:{" "}
+                           <span className="text-[16px] ml-2">
+                              {yearsExperience}
+                           </span>
+                        </p>
+                        <div className="card-actions justify-end">
+                           <button className="btn btn-primary">Listen</button>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+
+               {/* second card */}
+
+               {/* card end */}
+            </div>
+         </div>
+         <div className="flex items-center justify-center flex-col mt-8 mb-4">
+            <h2 className="text-gray-200 text-4xl font-bold font-poppins">
+               Recipes by Category
+            </h2>
+            <p className="text-gray-400 mt-2">
+               From Our Kitchen to Your Table: Discover Mouthwatering Recipes
+               for Every Occasion
+            </p>
+
+            <div className="text-gray-200">
+               {recipes.map((recipe) => (
+                  <Recipe key={recipe.id} recipe={recipe}></Recipe>
+               ))}
+            </div>
+         </div>
+      </>
    );
 };
 
 export default ChefRecfipe;
+
+{
+   /* <div
+   //  className=""
+   className="min-h-screen   flex items-center justify-center bg-cover"
+   style={{
+      backgroundImage: `url(${bg})`,
+      backgroundColor: "#0311418e",
+      backgroundBlendMode: "overlay",
+   }}> */
+}
+
+// </div>;
