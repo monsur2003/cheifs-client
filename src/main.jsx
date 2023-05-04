@@ -23,7 +23,10 @@ const router = createBrowserRouter([
          {
             path: "/",
             element: <Home></Home>,
-            loader: () => fetch("http://localhost:5000/chefs"),
+            loader: () =>
+               fetch(
+                  "https://mycheif-master-server-monsur776.vercel.app/chefs"
+               ),
          },
          {
             path: "/login",
@@ -44,7 +47,10 @@ const router = createBrowserRouter([
                   <ChefRecfipe></ChefRecfipe>
                </PrivateRoute>
             ),
-            loader: () => fetch("http://localhost:5000/chefs"),
+            loader: () =>
+               fetch(
+                  "https://mycheif-master-server-monsur776.vercel.app/chefs"
+               ),
          },
       ],
    },
