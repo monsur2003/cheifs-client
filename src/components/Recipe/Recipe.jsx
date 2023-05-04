@@ -42,12 +42,12 @@ const Recipe = ({ recipe }) => {
             <div className="flex mt-3 border-t-2 items-center gap-x-5">
                <div className="">
                   <Rating
-                     initialRating={rating}
+                     className="text-danger"
                      placeholderRating={rating}
                      emptySymbol={<FaRegStar></FaRegStar>}
                      placeholderSymbol={<FaStar></FaStar>}
                      fullSymbol={<FaStar></FaStar>}
-                     readOnly
+                     readonly
                   />
                </div>
 

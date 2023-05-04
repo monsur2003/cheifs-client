@@ -12,6 +12,7 @@ import AuthProvider from "./components/Provider/AuthProvider.jsx";
 import ChefRecfipe from "./components/ChefRecipe/ChefRecfipe.jsx";
 import ErrorPage from "./components/Error/ErrorPage.jsx";
 import PrivateRoute from "./components/Private/PrivateRoute.jsx";
+import About from "./components/About/About.jsx";
 
 // import AwesomeSlider from "react-awesome-slider";
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
          {
             path: "/blog",
             element: <Blogs></Blogs>,
+         },
+         {
+            path: "about",
+            element: <About></About>,
          },
          {
             path: "/details/:id",

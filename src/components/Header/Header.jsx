@@ -20,53 +20,6 @@ const Navbar = () => {
 
    return (
       <>
-         {/* <nav className="fixed md:flex p-5 justify-between items-center text-blue-400 top-0 left-0 right-0 z-20 bg-[#1b1b4e81]">
-            <p className="company text-gray-300 text-4xl font-semibold">
-               <span className="text-5xl font-serif text-blue-700">F</span>
-               oodie
-            </p>
-            <div className="hidden md:flex items-center gap-x-3 md:gap-x-6">
-               <ActiveLink to="/">Home</ActiveLink>
-               <ActiveLink to="/login"> Login</ActiveLink>
-               <ActiveLink to="/blog">Blogs</ActiveLink>
-            </div>
-
-           
-            <div className="block md:hidden">
-               <button
-                  onClick={toggleMenu}
-                  className="flex items-center px-3 py-2">
-                  {menuOpen ? (
-                     <FaTimes className="text-2xl text-white"></FaTimes>
-                  ) : (
-                     <FaBars className="text-2xl text-white"></FaBars>
-                  )}
-               </button>
-            </div>
-         </nav>
-         {menuOpen && (
-            <div className="fixed top-0 left-50 right-0 h-[80px] bottom-0 z-50 bg-[#3737b1e7] flex flex-col items-center pt-28">
-               <ActiveLink
-                  onClick={toggleMenu}
-                  to="/"
-                  className="text-2xl text-white mb-4">
-                  Home
-               </ActiveLink>
-               <ActiveLink
-                  onClick={toggleMenu}
-                  to="/login"
-                  className="text-2xl text-white mb-4">
-                  Login
-               </ActiveLink>
-               <ActiveLink
-                  onClick={toggleMenu}
-                  to="/blog"
-                  className="text-2xl text-white mb-4">
-                  Blogs
-               </ActiveLink>
-            </div>
-         )} */}
-
          <nav className="bg-[#a5b2ff23] border-b border-blue-600 text-blue-500 fixed left-0 right-0 top-0 z-40">
             <div className="my-0 md:flex items-center w-[80%] py-7 mx-auto justify-between">
                <h2 className="text-[35px] text-gray-200 font-bold">
@@ -89,19 +42,24 @@ const Navbar = () => {
                      menuOpen ? "block duration-1000" : "hidden"
                   } md:flex md:items-center md:w-auto`}>
                   <div className="text-sm md:flex-grow">
-                     <Link
-                        to="/"
-                        className="block font-semibold mt-4 md:inline-block md:mt-0 text-blue-500 hover:text-blue-800 hover:bg-slate-400 p-1 mr-4">
-                        Home
-                     </Link>
-                     <Link className="block font-semibold mt-4 md:inline-block md:mt-0 text-blue-500 hover:text-blue-800 hover:bg-slate-400 p-1 mr-4">
-                        About us
-                     </Link>
-                     <Link
-                        to="/blog"
-                        className="block mt-4 font-semibold md:inline-block md:mt-0 hover:text-blue-800 hover:bg-slate-400 p-1 mr-4">
-                        Blog
-                     </Link>
+                     <div className="flex gap-x-3">
+                        <ActiveLink
+                           to="/"
+                           className="block font-semibold mt-4 md:inline-block md:mt-0 text-blue-500 hover:text-blue-800 hover:bg-slate-400 p-1 mr-4">
+                           Home
+                        </ActiveLink>
+                        <ActiveLink
+                           to="/About"
+                           className="block font-semibold mt-4 md:inline-block md:mt-0 text-blue-500 hover:text-blue-800 hover:bg-slate-400 p-1 mr-4">
+                           About us
+                        </ActiveLink>
+
+                        <ActiveLink
+                           to="/blog"
+                           className="block mt-4 font-semibold md:inline-block md:mt-0 hover:text-blue-800 hover:bg-slate-400 p-1 mr-4">
+                           Blog
+                        </ActiveLink>
+                     </div>
                   </div>
                </div>
                <div>
