@@ -3,9 +3,9 @@ import { FaHandPointRight } from "react-icons/fa";
 
 const Blogs = () => {
    return (
-      <div className=" pt-32 relative bg-blue-900 text-gray-400 z-0 mx-auto">
+      <div className=" pt-32 relative bg-gray-300   z-0 mx-auto">
          <div>
-            <h1 className="text-center underline text-6xl text-gray-500">
+            <h1 className="text-center underline text-6xl text-blue-700">
                QNA Question
             </h1>
          </div>

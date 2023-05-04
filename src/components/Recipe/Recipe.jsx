@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { Rating } from "@smastrom/react-rating";
+
 import { FaRegStar, FaStar } from "react-icons/fa";
+import Rating from "react-rating";
+import { ToastContainer, toast } from "react-toastify";
 
 const Recipe = ({ recipe }) => {
    console.log(recipe);
@@ -8,7 +10,7 @@ const Recipe = ({ recipe }) => {
 
    const [buttonDisabled, setButtonDisabled] = useState(false);
    const handleFavourite = () => {
-      // toast("Successfully Add to Favourite");
+      toast("Successfully Add to Favourite");
       setButtonDisabled(true);
    };
    return (
@@ -39,26 +41,25 @@ const Recipe = ({ recipe }) => {
                      : cookingMethod.slice(0, 260)}
                </p>
             </div>
-            <div className="flex mt-3 border-t-2 items-center gap-x-5">
-               <div className="">
-                  <Rating
-                     className="text-danger"
-                     placeholderRating={rating}
-                     emptySymbol={<FaRegStar></FaRegStar>}
-                     placeholderSymbol={<FaStar></FaStar>}
-                     fullSymbol={<FaStar></FaStar>}
-                     readonly
-                  />
-               </div>
 
-               <div>
-                  <button
-                     onClick={handleFavourite}
-                     disabled={buttonDisabled}
-                     className="w-[160px]  h-10 mt-3 bg-blue-700 text-gray-300   text-[18px] hover:bg-blue-900">
-                     Add to favourite
-                  </button>
-               </div>
+            <div className="flex justify-center items-center font-semibold text-2xl gap-x-2 border-t border-blue-300 mt-3 pt-2 w-full">
+               <Rating
+                  readonly
+                  className="text-3xl text-yellow-500  space-x-4"
+                  placeholderRating={rating}
+                  emptySymbol={<FaRegStar></FaRegStar>}
+                  placeholderSymbol={<FaStar></FaStar>}
+                  fullSymbol={<FaStar></FaStar>}></Rating>
+               <p>{rating}</p>
+            </div>
+
+            <div className="flex justify-center items-center pt-5">
+               <button
+                  onClick={handleFavourite}
+                  disabled={buttonDisabled}
+                  className="btn rounded-none btn-secondary">
+                  Add to favourite
+               </button>
             </div>
          </div>
       </div>

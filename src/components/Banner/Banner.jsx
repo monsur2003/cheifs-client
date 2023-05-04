@@ -50,7 +50,7 @@ const Banner = () => {
                      order to achieve maximum sales performance.
                   </p>
                   <div className="flex justify-center items-center mt-7">
-                     <button className="flex gap-1 rounded-none w-[30%] items-center btn btn-outline btn-primary text-blue-700 font-bold">
+                     <button className="flex gap-1 rounded-none w-[30%] items-center btn  btn-primary text-gray-200 font-bold">
                         {" "}
                         Contact us<FaPhone></FaPhone>
                      </button>
@@ -82,7 +82,7 @@ const Banner = () => {
                      malum est, dici aliter non potest.
                   </p>
                   <div className="flex justify-center items-center mt-7">
-                     <button className="flex gap-1 rounded-none w-[30%] items-center btn btn-outline btn-primary text-blue-700 font-bold">
+                     <button className="flex gap-1 rounded-none w-[30%] items-center btn  btn-primary text-gray-200 font-bold">
                         {" "}
                         Contact us<FaPhone></FaPhone>
                      </button>
@@ -113,7 +113,7 @@ const Banner = () => {
                      dining to casual cuisine
                   </p>
                   <div className="flex justify-center items-center mt-7">
-                     <button className="flex gap-1 rounded-none w-[30%] items-center btn btn-outline btn-primary text-blue-700 font-bold">
+                     <button className="flex gap-1 rounded-none w-[30%] items-center btn  btn-primary text-gray-200 font-bold">
                         {" "}
                         Contact us<FaPhone></FaPhone>
                      </button>

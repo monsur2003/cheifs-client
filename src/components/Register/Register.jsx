@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { FaBeer, FaGithub, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import bg from "../../assets/banner2.jpg";
 import { AuthContext } from "../Provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
@@ -8,17 +8,22 @@ import Typewriter from "typewriter-effect";
 const Register = () => {
    const [error, setError] = useState("");
    const [success, setSuccess] = useState("");
-   const { createUser } = useContext(AuthContext);
+   const [control, setControl] = useState(false);
+   const { createUser, googleLogin, githubLogin } = useContext(AuthContext);
+   const location = useLocation();
+   const navigate = useNavigate();
+   const from = location.state?.from?.pathname || "/";
+   console.log(location);
 
    const handleSignUp = (event) => {
       event.preventDefault();
       const form = event.target;
       const email = form.email.value;
-      const password = form.pass.value;
+      const password = form.passwordd.value;
       const name = form.name.value;
       const photo = form.photo.value;
       const confirmPassword = form.confirm.value;
-
+      console.log(email, password, name, photo, confirmPassword);
       if (password !== confirmPassword) {
          setError("Password Didn't match");
          return;
@@ -45,6 +50,32 @@ const Register = () => {
             setSuccess("");
             setError(error.message);
             console.log(err.message);
+         });
+   };
+   // google login
+   const loginWithGoogle = () => {
+      googleLogin()
+         .then((result) => {
+            const loggedUser = result.user;
+            navigate(from, { replace: true });
+            navigate(from, { replace: true });
+            console.log(loggedUser);
+         })
+         .catch((error) => {
+            console.log(error.message);
+         });
+   };
+   // github login
+   const loginWithGithub = () => {
+      githubLogin()
+         .then((result) => {
+            const loggedUser = result.user;
+            navigate(from, { replace: true });
+            navigate(from, { replace: true });
+            console.log(loggedUser);
+         })
+         .catch((error) => {
+            console.log(error.message);
          });
    };
 
@@ -133,20 +164,30 @@ const Register = () => {
                   />
                </div>
                <div className="flex justify-between items-center space-x-2">
-                  <div className="w-full">
+                  <div class="relative w-full">
                      <label
-                        className="block text-gray-100 font-bold mb-[4px]"
-                        htmlFor="password">
+                        class="block text-gray-100 font-bold m-[4px]"
+                        for="pass">
                         Enter Your Password
                      </label>
                      <input
-                        className="appearance-none border rounded rounded-r-none w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                        class="appearance-none border rounded-r-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         id="password"
-                        name="pass"
-                        type="password"
-                        placeholder="Password"
-                        required
+                        type={control ? "text" : "password"}
+                        name="passwordd"
+                        placeholder="*********"
                      />
+                     <div
+                        onClick={() => {
+                           setControl(!control);
+                        }}
+                        class="absolute inset-y-0 right-0 top-8 flex  items-center pr-3 cursor-pointer">
+                        {control ? (
+                           <FaEyeSlash class="text-gray-400 text-[23px]"></FaEyeSlash>
+                        ) : (
+                           <FaEye class="text-gray-400 text-[23px]"></FaEye>
+                        )}
+                     </div>
                   </div>
                   <div className="w-full">
                      <label
@@ -191,11 +232,13 @@ const Register = () => {
                   </p>
                   <div className="flex justify-center">
                      <button
+                        onClick={loginWithGithub}
                         type="button"
                         className="bg-white rounded-full border-gray-400 border-2 p-2 mr-2 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                         <FaGithub className="text-gray-500" />
                      </button>
                      <button
+                        onClick={loginWithGoogle}
                         type="button"
                         className="bg-white rounded-full border-gray-400 border-2 p-2 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                         <FaGoogle className="text-gray-500" />

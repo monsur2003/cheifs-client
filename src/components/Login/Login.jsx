@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react";
 import bg from "../../assets/banner2.jpg";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaGithub, FaGoogle } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 // import TypewriterComponent from "typewriter-effect";
 import Typewriter from "typewriter-effect";
 
 const Login = () => {
-   const { loginUser, googleLogin } = useContext(AuthContext);
+   const { loginUser, googleLogin, githubLogin } = useContext(AuthContext);
    const [error, setError] = useState("");
    const [success, setSuccess] = useState("");
+   const [control, setControl] = useState(false);
    const navigate = useNavigate();
    const location = useLocation();
    console.log(location);
@@ -38,13 +39,33 @@ const Login = () => {
       console.log(email, password);
    };
 
-   const loginWiteGoogle = () => {
+   const loginWithGoogle = () => {
       googleLogin()
          .then((result) => {
             const loggedUser = result.user;
+            setError("");
+            setSuccess("login successful");
+            navigate(from, { replace: true });
             console.log(loggedUser);
          })
          .catch((error) => {
+            setSuccess("");
+            setError(error.message);
+            console.log(error.message);
+         });
+   };
+   const loginWithGithub = () => {
+      githubLogin()
+         .then((result) => {
+            const loggedUser = result.user;
+            setError("");
+            setSuccess("login successful");
+            navigate(from, { replace: true });
+            console.log(loggedUser);
+         })
+         .catch((error) => {
+            setSuccess("");
+            setError(error.message);
             console.log(error.message);
          });
    };
@@ -88,21 +109,33 @@ const Login = () => {
                      placeholder="Email address"
                   />
                </div>
-               <div>
+               <div class="relative">
                   <label
-                     className="block text-gray-100 font-bold mb-2"
-                     htmlFor="password">
+                     class="block text-gray-100 font-bold mb-2"
+                     for="password">
                      Enter Your Password
                   </label>
                   <input
-                     className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                     class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                      id="password"
-                     type="password"
+                     type={control ? "text" : "password"}
                      name="password"
                      placeholder="Password"
                   />
+                  <div
+                     onClick={() => {
+                        setControl(!control);
+                     }}
+                     class="absolute inset-y-0 right-0 top-8 flex items-center pr-3 cursor-pointer">
+                     {control ? (
+                        <FaEyeSlash class="text-gray-400 text-[23px]"></FaEyeSlash>
+                     ) : (
+                        <FaEye class="text-gray-400 text-[23px]"></FaEye>
+                     )}
+                  </div>
                </div>
-               <div className="my-0 py-0 m-0 p-0">
+
+               <div className="">
                   {error ? (
                      <p className="text-red-500 m-0 p-0">{error}</p>
                   ) : (
@@ -135,12 +168,13 @@ const Login = () => {
                   </p>
                   <div className="flex justify-center">
                      <button
+                        onClick={loginWithGithub}
                         type="button"
                         className="bg-white rounded-full border-gray-400 border-2 p-2 mr-2 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                         <FaGithub className="text-gray-500" />
                      </button>
                      <button
-                        onClick={googleLogin}
+                        onClick={loginWithGoogle}
                         type="button"
                         className="bg-white rounded-full border-gray-400 border-2 p-2 transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-110">
                         <FaGoogle className="text-gray-500" />

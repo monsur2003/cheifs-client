@@ -1,6 +1,8 @@
 import React from "react";
 import { FaConciergeBell, FaGratipay, FaReceipt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const SingleChef = ({ chef }) => {
    // console.log(chef);
@@ -8,7 +10,8 @@ const SingleChef = ({ chef }) => {
    return (
       <div className="card flex my-3 md:flex-row flex-col md:w-full w-[90%] mx-auto md:h-[220px] h-[100] md:rounded-none rounded-md card-side items-center md:bg-[#a8a8c2ea] bg-white md:shadow-none shadow-lg shadow-base-400">
          <figure>
-            <img
+            <LazyLoadImage
+               effect="blur"
                className="md:w-[270px] w-full  h-[180]  md:h-[220px]"
                src={image}
                alt=""
