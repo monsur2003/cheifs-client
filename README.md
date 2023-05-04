@@ -17,7 +17,7 @@ To install the project dependencies, run the following command in your terminal:
 
 Create a job-related website.
 
-## link: https://amazing-chaja-98572c.netlify.app/statistic
+## link: https://cheif-master-auth.web.app
 
 -  Ensure that the website is responsive for both mobile and desktop devices.
 
