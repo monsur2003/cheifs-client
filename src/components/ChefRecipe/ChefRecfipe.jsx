@@ -17,7 +17,7 @@ const ChefRecfipe = () => {
          <div className="relative">
             {/* Video */}
             <video
-               className=" w-full h-[100vh] z-[-1] overlay object-cover"
+               className=" w-full h-[100vh] z-[-1] object-cover"
                src={video}
                autoPlay
                muted
@@ -72,7 +72,7 @@ const ChefRecfipe = () => {
                {/* card end */}
             </div>
          </div>
-         <div className="flex items-center justify-center flex-col mt-8 mb-4">
+         <div className="flex bg-blue-900 p-10 items-center justify-center flex-col mt-8 mb-4">
             <h2 className="text-gray-200 text-4xl font-bold font-poppins">
                Recipes by Category
             </h2>

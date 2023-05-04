@@ -13,7 +13,7 @@ const Recipe = ({ recipe }) => {
    };
    return (
       <div className="mt-9">
-         <div className="card w-[400px] h-[600px] border border-red-300 p-5">
+         <div className="card w-[400px] h-[600px] bg-[#12154293] border border-red-300 p-5">
             <div className="recipe-name">
                <h2 className="font-bold text-2xl text-center underline">
                   {name}

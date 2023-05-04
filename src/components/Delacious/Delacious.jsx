@@ -6,7 +6,7 @@ const Delacious = () => {
          <div className="relative my-10">
             <video
                src={vid}
-               className="h-[40vh]  w-full object-cover"
+               className="h-[40vh]   w-full object-cover"
                loop
                muted
                autoPlay></video>
