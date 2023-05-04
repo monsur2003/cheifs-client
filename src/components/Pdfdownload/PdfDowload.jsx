@@ -4,13 +4,15 @@ import Blogs from "../Blogs/Blogs";
 
 const PdfDowload = () => {
    return (
-      <div>
-         {/* <PDFDownloadLink document={<Blogs></Blogs>} fileName="form">
-            {({ loading }) =>
-               loading ? <button>Loading</button> : <button>download</button>
-            }
-         </PDFDownloadLink>
-         <Blogs></Blogs> */}
+      <div className="pt-32">
+         <div>
+            <button className="btn btn-primary">
+               <PDFDownloadLink document={<Blogs></Blogs>} fileName="form">
+                  {(loading) => (loading ? "Loading" : "download")}
+               </PDFDownloadLink>
+            </button>
+         </div>
+         <Blogs></Blogs>
       </div>
    );
 };

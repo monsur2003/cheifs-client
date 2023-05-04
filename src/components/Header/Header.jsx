@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import ActiveLink from "../ActiveLink/ActiveLink";
 import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
 import { AuthContext } from "../Provider/AuthProvider";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import Blogs from "../Blogs/Blogs";
 
 const Navbar = () => {
    const [menuOpen, setMenuOpen] = useState(false);
@@ -26,6 +28,7 @@ const Navbar = () => {
                   {" "}
                   <span className="text-blue-700 text-[40px]">F</span>oodie
                </h2>
+
                <div
                   className="md:hidden flex justify-end items-center"
                   onClick={() => setMenuOpen(!menuOpen)}>

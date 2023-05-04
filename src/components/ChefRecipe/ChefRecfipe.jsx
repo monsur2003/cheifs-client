@@ -4,6 +4,8 @@ import { useLoaderData, useParams } from "react-router-dom";
 // import bg from "../../assets/banner3.jpg";
 import video from "../../assets/videoplayback (2).mp4";
 import Recipe from "../Recipe/Recipe";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const ChefRecfipe = () => {
    const { id } = useParams();
@@ -29,7 +31,7 @@ const ChefRecfipe = () => {
                <div className="pt-[80px] mx-auto w-full">
                   <div className="w-full flex bg-[#291b4b9a] rounded-none lg:card-side  shadow-xl">
                      <figure>
-                        <img
+                        <LazyLoadImage
                            className=" object-cover"
                            src={image}
                            alt="Album"

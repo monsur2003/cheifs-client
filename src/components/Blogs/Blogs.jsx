@@ -1,24 +1,13 @@
-import {
-   Document,
-   Image,
-   PDFDownloadLink,
-   Page,
-   StyleSheet,
-   Text,
-   View,
-} from "@react-pdf/renderer";
+import { Document, Page, Text } from "@react-pdf/renderer";
 import React from "react";
-import { FaHandPointRight } from "react-icons/fa";
-import PdfDowload from "../Pdfdownload/PdfDowload";
 
 const Blogs = () => {
    return (
-      <div className="pt-32">
-         <PdfDowload></PdfDowload>
+      <div className="">
          <Document>
             <Page>
                <Text>
-                  <div className="  relative bg-gray-300   z-0 mx-auto">
+                  <div className="  relative  z-0 mx-auto">
                      <div>
                         <h1 className="text-center underline text-6xl text-blue-700">
                            QNA Question

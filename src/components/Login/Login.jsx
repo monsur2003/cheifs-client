@@ -107,6 +107,7 @@ const Login = () => {
                      type="email"
                      name="email"
                      placeholder="Email address"
+                     required
                   />
                </div>
                <div class="relative">
@@ -121,6 +122,7 @@ const Login = () => {
                      type={control ? "text" : "password"}
                      name="password"
                      placeholder="Password"
+                     required
                   />
                   <div
                      onClick={() => {
