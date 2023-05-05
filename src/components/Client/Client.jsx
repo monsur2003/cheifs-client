@@ -11,7 +11,7 @@ const Client = () => {
          .then((data) => setReviews(data));
    }, []);
    return (
-      <div className="bg-[#262686da] py-8">
+      <div className="bg-[#636390f2] py-8">
          <h2 className="text-center text-4xl  font-bold text-gray-200">
             Our Client Review
          </h2>

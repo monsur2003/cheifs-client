@@ -8,7 +8,7 @@ const Review = ({ rev }) => {
 
    return (
       <div>
-         <div className="card w-96 bg-base-100 shadow-xl">
+         <div className="card text-gray-200 w-96 bg-[#1616d68a] shadow-xl">
             <figure>
                <img src={image} alt="" />
             </figure>

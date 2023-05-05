@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 import ActiveLink from "../ActiveLink/ActiveLink";
 import { FaUserCircle, FaBars, FaTimes } from "react-icons/fa";
 import { AuthContext } from "../Provider/AuthProvider";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import Blogs from "../Blogs/Blogs";
 
 const Navbar = () => {
    const [menuOpen, setMenuOpen] = useState(false);
@@ -22,8 +20,8 @@ const Navbar = () => {
 
    return (
       <>
-         <nav className="bg-[#a5b2ff23] border-b border-blue-600 text-blue-500 fixed left-0 right-0 top-0 z-40">
-            <div className="my-0 md:flex items-center w-[80%] py-7 mx-auto justify-between">
+         <nav className="border-b bg-[#00000024] absolute  border-blue-600 text-white font-semibold  left-0 right-0 top-0 z-40">
+            <div className="my-0 md:flex items-center w-[80%] py-5 mx-auto justify-between">
                <h2 className="text-[35px] text-gray-200 font-bold">
                   {" "}
                   <span className="text-blue-700 text-[40px]">F</span>oodie

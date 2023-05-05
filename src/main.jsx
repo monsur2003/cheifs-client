@@ -7,13 +7,14 @@ import Main from "./components/Layout/Main.jsx";
 import Home from "./components/Home/Home.jsx";
 import Login from "./components/Login/Login.jsx";
 import Register from "./components/Register/Register.jsx";
-import Blogs from "./components/Blogs/Blogs.jsx";
+// import Blogs from "./components/Blogs/Blogs.jsx";
 import AuthProvider from "./components/Provider/AuthProvider.jsx";
 import ChefRecfipe from "./components/ChefRecipe/ChefRecfipe.jsx";
 import ErrorPage from "./components/Error/ErrorPage.jsx";
 import PrivateRoute from "./components/Private/PrivateRoute.jsx";
 import About from "./components/About/About.jsx";
-import PdfDowload from "./components/Pdfdownload/PdfDowload.jsx";
+// import PdfDowload from "./components/Pdfdownload/PdfDowload.jsx";
+import Blog from "./components/Blogs/Blog.jsx";
 
 // import AwesomeSlider from "react-awesome-slider";
 const router = createBrowserRouter([
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
          },
          {
             path: "/blog",
-            element: <PdfDowload></PdfDowload>,
+            element: <Blog></Blog>,
          },
          {
             path: "about",
