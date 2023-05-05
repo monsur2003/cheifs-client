@@ -1,6 +1,8 @@
 import React from "react";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import Rating from "react-rating";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 const Review = ({ rev }) => {
    console.log(rev);
@@ -10,7 +12,7 @@ const Review = ({ rev }) => {
       <div>
          <div className="card text-gray-200 w-96 bg-[#1616d68a] shadow-xl">
             <figure>
-               <img src={image} alt="" />
+               <LazyLoadImage effect="blur" src={image} alt="" />
             </figure>
             <div className="card-body">
                <div className="flex items-center justify-center gap-x-2 ">

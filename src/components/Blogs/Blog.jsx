@@ -5,7 +5,7 @@ import Pdf from "react-to-pdf";
 const Blog = () => {
    const ref = React.createRef();
    return (
-      <div className="w-[90%] relative flex flex-col justify-center items-center py-24 mx-auto">
+      <div className="w-[90%] relative flex flex-col justify-center items-center py-4 mx-auto">
          <div className="d-flex justify-content-center mt-3">
             <Pdf targetRef={ref} filename="blog.pdf">
                {({ toPdf }) => (

@@ -10,17 +10,13 @@ const Navbar = () => {
    // const { displayName, photoURL } = user;
    console.log("header", user);
 
-   const toggleMenu = () => {
-      setMenuOpen(!menuOpen);
-   };
-
    const handleLogOut = () => {
       logOutuser();
    };
 
    return (
       <>
-         <nav className="border-b bg-[#00000024] absolute  border-blue-600 text-white font-semibold  left-0 right-0 top-0 z-40">
+         <nav className="border-b bg-[#1b0539e6] border-blue-600 text-white font-semibold  left-0 right-0 top-0 z-40">
             <div className="my-0 md:flex items-center w-[80%] py-5 mx-auto justify-between">
                <h2 className="text-[35px] text-gray-200 font-bold">
                   {" "}
@@ -32,9 +28,9 @@ const Navbar = () => {
                   onClick={() => setMenuOpen(!menuOpen)}>
                   <span>
                      {menuOpen === true ? (
-                        <FaBars className="h-6 w-6 text-blue-500" />
-                     ) : (
                         <FaTimes className="h-6 w-6 text-blue-500" />
+                     ) : (
+                        <FaBars className="h-6 w-6 text-blue-500" />
                      )}
                   </span>
                </div>

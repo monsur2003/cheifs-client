@@ -37,6 +37,8 @@ const Register = () => {
          setError("Password must be at least 6 characters");
          return;
       }
+      setError("");
+      setSuccess("");
       createUser(email, password)
          .then((result) => {
             const createdUser = result.user;
@@ -48,7 +50,7 @@ const Register = () => {
          })
          .catch((err) => {
             setSuccess("");
-            setError(error.message);
+            setError(err.message);
             console.log(err.message);
          });
    };
@@ -58,7 +60,8 @@ const Register = () => {
          .then((result) => {
             const loggedUser = result.user;
             navigate(from, { replace: true });
-            navigate(from, { replace: true });
+            setError("");
+            setSuccess("login succesfully");
             console.log(loggedUser);
          })
          .catch((error) => {
@@ -205,7 +208,10 @@ const Register = () => {
                      />
                   </div>
                </div>
-               <p className="text-red-500">{error}</p>
+               <div className="py-[6px]">
+                  <p className="text-red-500">{error}</p>
+                  <p className="text-green-400 ">{success}</p>
+               </div>
                <div className="">
                   <button
                      type="submit"

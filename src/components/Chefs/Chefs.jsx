@@ -46,7 +46,7 @@ const Chefs = () => {
                      </p>
                   </div>
                   <div className="w-[90%] mx-auto flex flex-col justify-center items-center md:w-[80%] md:mx-auto md:grid md:grid-cols-2 gap-x-3 gap-y-3">
-                     <LazyLoadComponent effect={blur}>
+                     <LazyLoadComponent effect="building">
                         {allChefs.map((chef) => (
                            <SingleChef key={chef.id} chef={chef}></SingleChef>
                         ))}

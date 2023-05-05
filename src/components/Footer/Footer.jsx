@@ -6,8 +6,8 @@ const Footer = () => {
       <footer className="footer  p-10 bg-[#100c31d2] text-neutral-content">
          <div>
             <span className="footer-title">Services</span>
-            <Link className="link link-hover">Branding</Link>
-            <Link className="link link-hover">Design</Link>
+            <Link className="link link-hover">Food Deliver</Link>
+            <Link className="link link-hover">Chef finding</Link>
             <Link className="link link-hover">Marketing</Link>
             <Link className="link link-hover">Advertisement</Link>
          </div>
