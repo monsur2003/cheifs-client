@@ -1,7 +1,7 @@
 import React from "react";
 import { FaGratipay } from "react-icons/fa";
 import { useLoaderData, useParams } from "react-router-dom";
-// import bg from "../../assets/banner3.jpg";
+
 import video from "../../assets/videoplayback (2).mp4";
 import Recipe from "../Recipe/Recipe";
 import { LazyLoadImage } from "react-lazy-load-image-component";
@@ -19,7 +19,7 @@ const ChefRecfipe = () => {
          <div className="relative">
             {/* Video */}
             <video
-               className=" w-full h-[100vh] z-[-1] object-cover"
+               className=" w-[100%] h-[100vh]  object-cover"
                src={video}
                autoPlay
                muted
@@ -27,7 +27,7 @@ const ChefRecfipe = () => {
             {/* Overlay */}
             <div className=" absolute inset-0 bg-[#000000cc]"></div>
             {/* Text */}
-            <div className=" pt-36 absolute w-full flex justify-center flex-col items-center  top-[35%] left-[50%] transform -translate-x-1/2 -translate-y-1/2   z-10 max-w-7xl  px-4 sm:px-6 lg:px-8">
+            <div className=" pt-6 absolute w-full flex justify-center flex-col items-center  top-[35%] left-[50%] transform -translate-x-1/2 -translate-y-1/2   z-10 max-w-7xl  px-4 sm:px-6 lg:px-8">
                <div className="pt-[80px] mx-auto w-full">
                   <div className="w-full flex bg-[#291b4b9a] rounded-none lg:card-side  shadow-xl">
                      <figure>
@@ -68,10 +68,6 @@ const ChefRecfipe = () => {
                      </div>
                   </div>
                </div>
-
-               {/* second card */}
-
-               {/* card end */}
             </div>
          </div>
          <div className="flex bg-blue-900 p-10 items-center justify-center flex-col mt-8 mb-4">

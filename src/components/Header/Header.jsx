@@ -7,7 +7,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 const Navbar = () => {
    const [menuOpen, setMenuOpen] = useState(false);
    const { user, logOutuser } = useContext(AuthContext);
-   // const { displayName, photoURL } = user;
+
    console.log("header", user);
 
    const handleLogOut = () => {
@@ -16,7 +16,7 @@ const Navbar = () => {
 
    return (
       <>
-         <nav className="border-b bg-[#1b0539e6] border-blue-600 text-white font-semibold  left-0 right-0 top-0 z-40">
+         <nav className="border-b bg-[#1b0539e6] relative border-blue-600 text-white font-semibold   ">
             <div className="my-0 md:flex items-center w-[80%] py-5 mx-auto justify-between">
                <h2 className="text-[35px] text-gray-200 font-bold">
                   {" "}
@@ -39,10 +39,10 @@ const Navbar = () => {
                      menuOpen ? "block duration-1000" : "hidden"
                   } md:flex md:items-center md:w-auto`}>
                   <div className="text-sm md:flex-grow">
-                     <div className="flex gap-x-3">
+                     <div className="flex z-50 gap-x-3">
                         <ActiveLink
                            to="/"
-                           className="block font-semibold mt-4 md:inline-block md:mt-0 text-blue-500 hover:text-blue-800 hover:bg-slate-400 p-1 mr-4">
+                           className="block  font-semibold mt-4 md:inline-block md:mt-0 text-blue-500 hover:text-blue-800 hover:bg-slate-400 p-1 mr-4">
                            Home
                         </ActiveLink>
                         <ActiveLink
